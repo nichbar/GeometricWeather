@@ -5,19 +5,15 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-
 import java.util.List;
 import java.util.TimeZone;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import wangdaye.com.geometricweather.basic.model.location.Location;
 import wangdaye.com.geometricweather.basic.model.option.provider.WeatherSource;
 import wangdaye.com.geometricweather.db.DatabaseHelper;
-import wangdaye.com.geometricweather.location.service.AMapLocationService;
 import wangdaye.com.geometricweather.location.service.AndroidLocationService;
-import wangdaye.com.geometricweather.location.service.ip.BaiduIPLocationService;
-import wangdaye.com.geometricweather.location.service.BaiduLocationService;
 import wangdaye.com.geometricweather.location.service.LocationService;
 import wangdaye.com.geometricweather.settings.SettingsOptionManager;
 import wangdaye.com.geometricweather.utils.NetworkUtils;
@@ -38,22 +34,22 @@ public class LocationHelper {
     @NonNull private final WeatherService caiyunWeather;
 
     public LocationHelper(Context context) {
-        switch (SettingsOptionManager.getInstance(context).getLocationProvider()) {
-            case BAIDU:
-                locationService = new BaiduLocationService(context);
-                break;
-
-            case BAIDU_IP:
-                locationService = new BaiduIPLocationService();
-                break;
-
-            case AMAP:
-                locationService = new AMapLocationService(context);
-                break;
-            default: // NATIVE
+//        switch (SettingsOptionManager.getInstance(context).getLocationProvider()) {
+//            case BAIDU:
+//                locationService = new BaiduLocationService(context);
+//                break;
+//
+//            case BAIDU_IP:
+//                locationService = new BaiduIPLocationService();
+//                break;
+//
+//            case AMAP:
+//                locationService = new AMapLocationService(context);
+//                break;
+//            default: // NATIVE
                 locationService = new AndroidLocationService(context);
-                break;
-        }
+//                break;
+//        }
 
         accuWeather = new AccuWeatherService();
         cnWeather = new CNWeatherService();
